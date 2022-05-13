@@ -1,88 +1,89 @@
-//get a reference to the add button
-// var settingAddButtonElem = document.querySelector("input[name='number']:checked");
-// if(settingAddButtonElem)  {  
-//     var billString = settingAddButtonElem.value;
-// }
-const settingAddButtonElem = document.querySelector(". setting")
-//get a reference to the 'Update settings' button
-const settingupdateButtonElem = document.querySelector(".updateSettings")
-// create a variables that will keep track of all the settings
 
-// get a reference to the total
+const settingAddButtonElem = document.querySelector(".setting")
+const settingupdateButtonElem = document.querySelector(".updateSettings")
 const callsetTotalElem= document.querySelector(".callTotalSettings");
 const smssetTotalElem = document.querySelector(".smsTotalSettings");
 const totalsetTotalElem = document.querySelector(".totalSettings");
 
-var settotalTwo = 0;
+var callsetButton =0
+var smssetButton=0
+var warningSetButton=0
+var criticalSetButton =0
 
-var setcallTotal1 = 0;
-var setsmsTotal1 = 0;
+var totalTwo = 0;
+var callTotal1 = 0;
+var smsTotal1 = 0;
 
-function calculateBtnClicked4(){
-
-// get refences to all the settings fields
-// call set button
-const callsetButtonElem = document.querySelector(".callCostSetting");
-if(callsetButtonElem){
-    var billString1 = callsetButtonElem.value;
-} 
-// sms set  button
-const smssetButtonElem = document.querySelector(".smsCostSetting");
-if(smssetButtonElem){
-    var billString2= smssetButtonElem.value;
-}
+function calculateBtnClicked5(){
+    
+var settingButtonElem = document.querySelector("input[name='billItemTypeWithSettings']:checked").value;
+// if(settingButtonElem){ 
+//     var billStringSet = settingButtonElem.value;
+   
+// }
 
 
 
-// get a reference to the sms or call radio buttons
-var billSettingButtonElem = document.querySelector("input[name='billItemTypeWithSettings']:checked");
-if(billSettingButtonElem)  {  
-    var billString = billSettingButtonElem.value;
-}
-if(billString === "call"){
-    setcallTotal1 += billString1
-}
-else if (billString === "sms"){
-    setsmsTotal1 += billString2
-}
- var smsTot  = setcallTotal1.toFixed(2);
-callsetTotalElem.innerHTML = smsTot;
-
- var callTot = setsmsTotal1.toFixed(2);
-smssetTotalElem.innerHTML =  callTot ;
-
- settotalTwo= Number(smsTot) + Number(callTot);
-totalsetTotalElem.innerHTML = settotalTwo.toFixed(2);
+  if(settingButtonElem === "call"){
+      if(criticalSetButton < Number(callTotal1) + Number(callsetButton) + Number(smsTotal1)){
+      return
+     }
+        callTotal1 += callsetButton;
+     
+    }
+    else if (settingButtonElem === "sms"){
+        if(criticalSetButton < Number(callTotal1) + Number(smssetButton) + Number(smsTotal1)){
+            return 
+        }
+        smsTotal1 += smssetButton;
+    
+    }
 
 
-// set warning level 
-const warningsetButtonElem = document.querySelector(".warningLevelSetting");
-if(warningsetButtonElem){
-    var billString3= warningsetButtonElem.value;
-}
-// criticallevel
-const criticalsetButtonElem = document.querySelector(".criticalLevelSetting");
-if(criticalsetButtonElem){
-    var billString4 = criticalsetButtonElem.value;
-}
-if(settotalTwo>billString3 && settotalTwo< billString4){
+ var  callTot  = callTotal1.toFixed(2);
+
+
+var smsTot = smsTotal1.toFixed(2);
+
+totalTwo= Number(smsTot) + Number(callTot);
+
+    smssetTotalElem.innerHTML =  smsTot;
+    callsetTotalElem.innerHTML = callTot;
+    totalsetTotalElem.innerHTML = totalTwo.toFixed(2);  
+
+
+//000000000000000
+if(totalTwo>=warningSetButton && totalTwo<criticalSetButton){
     totalsetTotalElem.classList.add("warning");
-}
-else if(settotalTwo>billString4){
+}else if(totalTwo >= criticalSetButton){
     totalsetTotalElem.classList.add("danger");
 }
 
-
-//  set arrow and button
-var setArrowElem = document.querySelector("input[type='number']:checked");
-if(setArrowElem){
-   var billString = setArrowElem.value;
+}
+function addClasses(){
+    if(!(totalTwo>=warningSetButton && totalTwo<criticalSetButton)){
+        totalsetTotalElem.classList.remove("warning");
+    }else{ 
+        totalsetTotalElem.classList.add("warning");
+    }
+     if(totalTwo<criticalSetButton){
+        totalsetTotalElem.classList.remove("danger");
+    }else{
+        totalsetTotalElem.classList.add("danger");
+    }
+}
+function settingUpdate(){
+      callsetButton= Number(document.querySelector(".callCostSetting").value);
+      smssetButton = Number(document.querySelector(".smsCostSetting").value);
+      warningSetButton= Number(document.querySelector(".warningLevelSetting").value); 
+     
+      criticalSetButton = Number(document.querySelector(".criticalLevelSetting").value);
+     addClasses()
+     
 }
 
-}
-//add an event listener for when the 'Update settings' button is pressed
-settingupdateButtonElem .addEventListener('click',calculateBtnClicked4)
+settingupdateButtonElem.addEventListener('click', settingUpdate)
 //add an event listener for when the add button is pressed
-settingAddButtonElem .addEventListener('click',calculateBtnClicked4)
+settingAddButtonElem.addEventListener('click',calculateBtnClicked5)
 //in the event listener get the value from the billItemTypeRadio radio buttons
 

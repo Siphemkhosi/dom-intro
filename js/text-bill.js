@@ -16,7 +16,7 @@ var smsTotal = 0;
 
 function calculateBtnClicked2(){
 
-    const aButtonText = document.querySelector(".billTypeText");
+ const aButtonText = document.querySelector(".billTypeText");
 if(aButtonText){
     var billString =  aButtonText.value.trim();
 }

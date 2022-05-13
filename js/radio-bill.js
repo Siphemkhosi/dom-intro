@@ -17,6 +17,7 @@ var radioButtonElem = document.querySelector("input[name='billItemType']:checked
 
 if(radioButtonElem){
     var billString = radioButtonElem.value;
+ 
 }
   if(billString === "call"){
         callTotal1 += 2.75;

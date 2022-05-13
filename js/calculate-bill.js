@@ -9,12 +9,10 @@ const billStringElement = document.querySelector(".billString");
 
 
 //create the function that will be called when the calculate button is pressed
- var roundedBillTotal=0;
- var billTotal = 0;
  
 function calculateBtnClicked(){
     var billString = billStringElement.value;
-   
+    var billTotal = 0;
 //  * this function should read the string value entered - split it on a comma.
 var billItems = billString.split(",");
 //  * loop over all the entries in the the resulting list
@@ -31,8 +29,7 @@ else if (billItem === "sms"){
 
 }
 
- roundedBillTotal = billTotal.toFixed(2);
-
+ var roundedBillTotal = billTotal.toFixed(2);
 billTotalcost.innerHTML = roundedBillTotal;
 
 // let colorWarn = document.querySelector(".warning:checked")
