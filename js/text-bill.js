@@ -20,10 +20,10 @@ function calculateBtnClicked2(){
 if(aButtonText){
     var billString =  aButtonText.value.trim();
 }
-if (billString === "call"){
+if (billString = "call"){
     callTotal += 2.75;
 }
-else if (billString === "sms"){
+else if (billString = "sms"){
     smsTotal += 0.75;
 
 }

@@ -21,9 +21,6 @@ var settingButtonElem = document.querySelector("input[name='billItemTypeWithSett
 //     var billStringSet = settingButtonElem.value;
    
 // }
-
-
-
   if(settingButtonElem === "call"){
       if(criticalSetButton < Number(callTotal1) + Number(callsetButton) + Number(smsTotal1)){
       return
