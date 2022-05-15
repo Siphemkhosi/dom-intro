@@ -19,10 +19,10 @@ var billItems = billString.split(",");
 for (var i=0;i<billItems.length;i++){
     var billItem = billItems[i].trim();
 //  * check if it is a call or an sms and add the right amount to the overall total
-if (billItem = "call"){
+if (billItem.toLowerCase() === "call"){
     billTotal += 2.75;
 }
-else if (billItem = "sms"){
+else if (billItem.toLowerCase() === "sms"){
     billTotal += 0.75;
 }
 //  * once done looping over all the entries - display the total onto the screen in the billTotal element

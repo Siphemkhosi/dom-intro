@@ -17,18 +17,23 @@ var smsTotalt = 0;
 
 function calculateBtnClicked2(){
    
-  
+
+
  const aButtonText = document.querySelector(".billTypeText");
+//  let regExp = /[a-z A-Z]*/;
+
 if(aButtonText){
+
     var billString =  aButtonText.value.trim();
 }
 
-if(billString === "call"){
+if(billString.toLowerCase() === "call"){
     callTotalt += 2.75;
-}else if(billString === "sms"){
+}else if(billString.toLowerCase() === "sms"){
     smsTotalt += 0.75;
 
 }
+
 
 var roundedBillTotal1t =   callTotalt.toFixed(2);
 callBillTotalElem.innerHTML = roundedBillTotal1t;
