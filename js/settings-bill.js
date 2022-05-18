@@ -22,7 +22,7 @@ var settingButtonElem = document.querySelector("input[name='billItemTypeWithSett
    
 // }
   if(settingButtonElem === "call"){
-      if(criticalSetButton < Number(callTotal1) + Number(callsetButton) + Number(smsTotal1)){
+      if(criticalSetButton = Number(callTotal1) + Number(callsetButton) + Number(smsTotal1)){
       return
      }
         callTotal1 += callsetButton;
@@ -63,7 +63,7 @@ function addClasses(){
     }else{ 
         totalsetTotalElem.classList.add("warning");
     }
-     if(totalTwo<criticalSetButton){
+     if(totalTwo<=criticalSetButton){
         totalsetTotalElem.classList.remove("danger");
     }else{
         totalsetTotalElem.classList.add("danger");
